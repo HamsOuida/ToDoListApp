@@ -1,0 +1,12 @@
+.app-component{
+  height: 100vh;
+  position: relative;
+  &__chang-lan{
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+    button{
+      margin-inline: 2px;
+    }
+  }
+}

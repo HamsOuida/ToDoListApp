@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'src/scss/abstracts/_mixins';
+@import 'src/scss/shared/index';
+
+body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+* {
+  box-sizing: border-box;
+}

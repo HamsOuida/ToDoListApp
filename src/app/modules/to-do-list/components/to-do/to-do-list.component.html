@@ -1,0 +1,109 @@
+<div class="to-do-list">
+  <div class="to-do-list__date">
+    <div class="to-do-list__date__full-date">
+      <div class="to-do-list__date__full-date__number">12</div>
+      <div class="to-do-list__date__full-date__month-year">
+        <div>JAN</div>
+        <div>2022</div>
+      </div>
+    </div>
+    <div class="to-do-list__date__day">TUESDAY</div>
+  </div>
+  <div class="to-do-list__list-container">
+    <input type="text" id="search" name="search" class="to-do-list__list-container__search-input"
+     placeholder="Search To Do List"
+    (keyup)="searchList($event)">
+    <div
+      class="to-do-list__list-container__list-item"
+      *ngFor="let listItem of filterToDoList() | slice: 0:7; trackBy: trackByItem; let i = index"
+    >
+      <div
+        class="to-do-list__list-container__list-item__name"
+        [ngClass]="{ disabled: listItem.completed }"
+      >
+        {{ listItem?.title }}
+      </div>
+      <div class="to-do-list__list-container__list-item__actions">
+        <div
+          (click)="checkItem(listItem)"
+          class="to-do-list__list-container__list-item__checkbox-container"
+          [ngClass]="{ checked: listItem.completed }"
+        >
+          <span
+            class="
+              to-do-list__list-container__list-item__checkbox-container__checked-icon
+            "
+            *ngIf="listItem.completed"
+            >✓</span
+          >
+        </div>
+        <div class="menu-nav">
+          <div class="dropdown-container" tabindex="-1">
+            <div class="three-dots"></div>
+            <div class="dropdown">
+              <div (click)="deleteItem(listItem)">delete</div>
+              <div (click)="updateItem(listItem)">update</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="to-do-list__list-container__list-item__no-data" *ngIf="filterToDoList().length ==0 ">No Data Found</div>
+  </div>
+  <div class="to-do-list__add-item" (click)="openModalForm()">
+    <a class="to-do-list__add-item__add-section">+</a>
+  </div>
+
+<div class="to-do-list__overlay" *ngIf="openModal">
+  <div class="to-do-list__overlay__popup">
+    <h2>Add New To Do Item</h2>
+    <a class="to-do-list__overlay__popup__close" href="#" (click)="closeModal()">&times;</a>
+    <div class="to-do-list__overlay__popup__content">
+      <form [formGroup]="toDoForm" novalidate>
+        <div class="to-do-list__overlay__popup__content__form-group">
+          <label for="title">To Do Title</label>
+          <input
+            class="to-do-list__overlay__popup__content__form-group__title-input"
+            type="text"
+            name="title"
+            formControlName="title"
+            required
+            [ngClass]="{
+              'is-invalid': submitted && toDoForm.controls['title']?.errors
+            }"
+          />
+          <div
+            *ngIf="submitted && toDoForm.controls['title']?.errors"
+            class="to-do-list__overlay__popup__content__form-group__text-danger"
+          >
+            <div *ngIf="toDoForm.controls['title']?.errors">
+              First Name is required
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="to-do-list__overlay__popup__content__next-to">
+          <label for="title">Completed Or Not</label>
+          <div
+            (click)="toggleSelection()"
+            class="to-do-list__overlay__popup__content__next-to__checkbox-container"
+            [ngClass]="{ checked: toDoForm.value.completed }"
+          >
+            <span
+              class="to-do-list__overlay__popup__content__next-to__checkbox-container__checked-icon"
+              *ngIf="toDoForm.value.completed"
+              >✓</span
+            >
+          </div>
+        </div>
+        <br />
+        <div class="to-do-list__overlay__popup__content__btn-container">
+          <button class="btn" (click)="saveItem()">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+</div>
+

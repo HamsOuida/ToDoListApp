@@ -1,0 +1,14 @@
+.to-do-page {
+  background-color: #f0efea;
+  height: 100%;
+  width: 100%;
+  &__page-header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  &__toDo-container {
+    margin: 5% auto;
+  }
+}

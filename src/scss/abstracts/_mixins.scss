@@ -1,0 +1,6 @@
+
+@mixin IncludeRtl() {
+  body.rtl {
+    @content;
+  }
+}
