@@ -117,11 +117,6 @@ export class ToDoListComponent implements OnInit {
     }
     return this.toDoList;
   }
-  /**
-   * this simple function created for tracking elements in to do list
-   * @param index, index of every item in list
-   * @returns returns index identifier for this element.
-   */
   trackByItem(index: number): number {
     return index;
   }
