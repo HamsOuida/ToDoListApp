@@ -14,9 +14,7 @@
       width: 50%;
       &__green-item {
         background-color: #02b1ac;
-        position: absolute;
-        top: 0;
-        left: 0;
+        position: relative;
         height: 120px;
         width: 90%;
         &::after {
@@ -34,7 +32,7 @@
         background-color: #004e75;
         height: 60px;
         position: absolute;
-        top: 33%;
+        top: 17%;
         left: 0;
         width: 100%;
         &:after {
@@ -65,7 +63,7 @@
         width: 80px;
         height: 80px;
         position: absolute;
-        top: 60%;
+        top: 40%;
         left: 5%;
         background: #fff;
         padding: 5px;
@@ -125,7 +123,7 @@
           width: 85%;
         }
         &__blue-item{
-          top:32%
+          top:28%
         }
       }
       &__right_item{
@@ -159,12 +157,12 @@
         }
         &__qr-code{
           top: 0;
-          margin-top: 13%;
+          margin-top: 18%;
         }
       }
       &__right_item{
         width: 70%;
-        padding-top: 35%;
+        padding-top: 10%;
         &__white-item:after{
           left: -60px;
         }
